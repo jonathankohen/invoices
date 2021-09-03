@@ -1,11 +1,18 @@
-const { newDate, addToInvoice, getTotal } = require('./utils');
+// 1
+exports.is_date = input => {
+    return input instanceof Date ? true : false;
+};
 
-// const createInvoice = amount => {
-//     addToInvoice(newDate(), amount);
-//     getTotal();
-// };
+// 2
+exports.curr_date = input => {
+    const today = new Date();
+    return `${
+        today.getMonth() + 1
+    }${input}${today.getDate()}${input}${today.getFullYear()}`;
+};
 
-// createInvoice();
-// console.log(charges);
-
-// 1. Write a JavaScript function to check whether an `input` is a date object or not
+// 3
+exports.days_in_month = (month, year) => {
+    let date = new Date(year, month);
+    return date;
+};
