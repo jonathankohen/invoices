@@ -1,4 +1,11 @@
-const { is_date, curr_date, days_in_month } = require('./index.js');
+const {
+    is_date,
+    curr_date,
+    days_in_month,
+    month_name,
+    compare_dates,
+    add_minutes,
+} = require('./index.js');
 
 describe('is_date', () => {
     it('returns true or false based on input', () => {
@@ -25,12 +32,41 @@ describe('days_in_month', () => {
     });
 });
 
-// console.log(getDaysInMonth(1, 2012));
-// console.log(getDaysInMonth(2, 2012));
-// console.log(getDaysInMonth(9, 2012));
-// console.log(getDaysInMonth(12, 2012));
-// Output :
-// 31
-// 29
-// 30
-// 31
+describe('month_name', () => {
+    it('returns current date formatted', () => {
+        expect(month_name(new Date('10/11/2009'))).toBe('October');
+        expect(month_name(new Date('11/13/2014'))).toBe('November');
+    });
+});
+
+describe('compare_dates', () => {
+    it('returns current date formatted', () => {
+        expect(
+            compare_dates(
+                new Date('11/14/2013 00:00'),
+                new Date('11/14/2013 00:00')
+            )
+        ).toBe('Date1 = Date2');
+        expect(
+            compare_dates(
+                new Date('11/14/2013 00:01'),
+                new Date('11/14/2013 00:00')
+            )
+        ).toBe('Date1 > Date2');
+        expect(
+            compare_dates(
+                new Date('11/14/2013 00:00'),
+                new Date('11/14/2013 00:01')
+            )
+        ).toBe('Date1 < Date2');
+    });
+});
+
+// Depreciated
+// describe('add_minutes', () => {
+//     it('returns current date formatted', () => {
+//         expect(add_minutes(new Date(2014, 10, 2), 30)).toBe(
+//             'Sun Nov 02 2014 00:30:00 GMT+0530 (India Standard Time)'
+//         );
+//     });
+// });
